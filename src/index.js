@@ -1,36 +1,39 @@
 import fs from 'fs';
-// import path from 'path';
+import path from 'path';
 import _ from 'lodash';
-// import process from 'process';
+import process from 'process';
 
 // console.log(fs.readFileSync('./work_files/file1.json', 'utf-8'));
 
-const getData = (filepath) => fs.readFileSync(filepath, 'utf-8');
-const getDataParsed = (filepath) => JSON.parse(filepath);
+const getData = (filePath) => fs.readFileSync(filePath, 'utf-8');
+const getDataParsed = (filePath) => JSON.parse(filePath);
 const key = (data) => _.keys(data);
+const getFormattedFilePath = (filePath) => path.resolve(process.cwd(), './__fixtures__/', path.basename(filePath));
 
 const genDiff = (filepath1, filepath2) => {
-  const data1 = getData(filepath1);
-  const data2 = getData(filepath2);
+  const formattedFilePath1 = getFormattedFilePath(filepath1);
+  const formattedFilePath2 = getFormattedFilePath(filepath2);
+  const data1 = getData(formattedFilePath1);
+  const data2 = getData(formattedFilePath2);
   const dataParsed1 = getDataParsed(data1);
   const dataParsed2 = getDataParsed(data2);
   const keys1 = key(dataParsed1);
   const keys2 = key(dataParsed2);
   const keys = _.union(keys1, keys2);
   let result = {};
-  const resultKeys = keys.map((key) => {
-    if (_.has(dataParsed1, key) && _.has(dataParsed2, key)) {
-      if (dataParsed1[key] === dataParsed2[key]) {
-        result = `  ${key}: ${dataParsed1[key]}`;
+  const resultKeys = keys.map((item) => {
+    if (_.has(dataParsed1, item) && _.has(dataParsed2, item)) {
+      if (dataParsed1[item] === dataParsed2[item]) {
+        result = `  ${item}: ${dataParsed1[item]}`;
       } else {
-        result = [`- ${key}: ${dataParsed1[key]}`, `+ ${key}: ${dataParsed2[key]}`];
+        result = [`- ${item}: ${dataParsed1[item]}`, `+ ${item}: ${dataParsed2[item]}`];
       }
     }
-    if (!_.has(dataParsed1, key)) {
-      result = `+ ${key}: ${dataParsed2[key]}`;
+    if (!_.has(dataParsed1, item)) {
+      result = `+ ${item}: ${dataParsed2[item]}`;
     }
-    if (!_.has(dataParsed2, key)) {
-      result = `- ${key}: ${dataParsed1[key]}`;
+    if (!_.has(dataParsed2, item)) {
+      result = `- ${item}: ${dataParsed1[item]}`;
     }
 
     return result;
