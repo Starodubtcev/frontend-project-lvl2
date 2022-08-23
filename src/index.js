@@ -43,4 +43,4 @@ const genDiff = (filepath1, filepath2) => {
   return `{\n${sortedResult.join('\n')}\n}`;
 };
 
-export default genDiff;
+export { genDiff, getData, getFormattedFilePath };
