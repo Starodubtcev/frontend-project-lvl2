@@ -9,5 +9,5 @@ jobs:
       - uses: actions/setup-node@v1
       - run: make install
       - run: npm i --save-dev jest
-      - run: make lint
+      - run: npx lint .
       - run: make test
