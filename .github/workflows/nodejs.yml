@@ -7,10 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - name: npm install
-        run: |
-          make install
-        env:
-          CI: true
+      - run: make install
       - run: make lint
       - run: make test
