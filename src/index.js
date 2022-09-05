@@ -1,22 +1,24 @@
-import fs from 'fs';
-import path from 'path';
+// import fs from 'fs';
+// import path from 'path';
 import _ from 'lodash';
-import process from 'process';
+// import process from 'process';
+import { getDataParsed } from './parsers.js';
 
 // console.log(fs.readFileSync('./work_files/file1.json', 'utf-8'));
 
-const getData = (filePath) => fs.readFileSync(filePath, 'utf-8');
-const getDataParsed = (filePath) => JSON.parse(filePath);
+// const getData = (filePath) => fs.readFileSync(filePath, 'utf-8');
+// const getDataParsed = (filePath) => JSON.parse(filePath);
 const key = (data) => _.keys(data);
-const getFormattedFilePath = (filePath) => path.resolve(process.cwd(), './__fixtures__/', path.basename(filePath));
+// const getFormattedFilePath =
+// (filePath) => path.resolve(process.cwd(), './__fixtures__/', path.basename(filePath));
 
 const genDiff = (filepath1, filepath2) => {
-  const formattedFilePath1 = getFormattedFilePath(filepath1);
-  const formattedFilePath2 = getFormattedFilePath(filepath2);
-  const data1 = getData(formattedFilePath1);
-  const data2 = getData(formattedFilePath2);
-  const dataParsed1 = getDataParsed(data1);
-  const dataParsed2 = getDataParsed(data2);
+  // const formattedFilePath1 = getFormattedFilePath(filepath1);
+  // const formattedFilePath2 = getFormattedFilePath(filepath2);
+  // const data1 = getData(formattedFilePath1);
+  // const data2 = getData(formattedFilePath2);
+  const dataParsed1 = getDataParsed(filepath1);
+  const dataParsed2 = getDataParsed(filepath2);
   const keys1 = key(dataParsed1);
   const keys2 = key(dataParsed2);
   const keys = _.union(keys1, keys2);
@@ -43,4 +45,5 @@ const genDiff = (filepath1, filepath2) => {
   return `{\n${sortedResult.join('\n')}\n}`;
 };
 
-export { genDiff, getData, getFormattedFilePath };
+// export { genDiff, getData, getFormattedFilePath };
+export default genDiff;
