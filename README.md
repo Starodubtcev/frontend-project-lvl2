@@ -10,3 +10,6 @@
 
 Example of .json difference
 <a href="https://asciinema.org/a/fHZL8J92E7D4TvT2ewqDMOKwM" target="_blank"><img src="https://asciinema.org/a/fHZL8J92E7D4TvT2ewqDMOKwM.svg" /></a>
+
+Example of .yml and .yaml difference
+<a href="https://asciinema.org/a/lVvprUQwcH7mgTVcTXlCmSmkI" target="_blank"><img src="https://asciinema.org/a/lVvprUQwcH7mgTVcTXlCmSmkI.svg" /></a>

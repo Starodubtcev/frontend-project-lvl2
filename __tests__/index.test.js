@@ -25,5 +25,5 @@ test('.yaml 1st level deep check', () => {
 });
 
 test('incorrect format check', () => {
-  expect(genDiff('file1.yaml', 'file2.ym')).toThrowError(new Error('Incorrect format, you can use only .json, .yml, .yaml formats'));
+  expect(() => genDiff('file1.yaml', 'file2.ym')).toThrowError(new Error('Incorrect format, you can use only .json, .yml, .yaml formats'));
 });
