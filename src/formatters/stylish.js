@@ -13,6 +13,11 @@ const stylish = (data) => {
       case 'changed':
         return `- ${name}: ${value1}\n+ ${name}: ${value2}`;
       default:
+        console.log(`name ${name}`);
+        console.log(`value ${value}`);
+        console.log(`value1 ${value1}`);
+        console.log(`value2 ${value2}`);
+        console.log(`type ${type}`);
         throw new Error(`${type} - is unknown active`);
     }
   });
