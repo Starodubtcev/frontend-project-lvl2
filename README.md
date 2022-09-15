@@ -9,7 +9,10 @@
 <a href="https://codeclimate.com/github/Starodubtcev/frontend-project-lvl2/test_coverage"><img src="https://api.codeclimate.com/v1/badges/ebd5b4f66a820ce8da9e/test_coverage" /></a>
 
 Example of .json difference
-<a href="https://asciinema.org/a/fHZL8J92E7D4TvT2ewqDMOKwM" target="_blank"><img src="https://asciinema.org/a/fHZL8J92E7D4TvT2ewqDMOKwM.svg" /></a>
+<a href="https://asciinema.org/a/2A4VfczuQVRXJNF0qXI2Do2zw" target="_blank"><img src="https://asciinema.org/a/2A4VfczuQVRXJNF0qXI2Do2zw.svg" /></a>
 
 Example of .yml and .yaml difference
-<a href="https://asciinema.org/a/lVvprUQwcH7mgTVcTXlCmSmkI" target="_blank"><img src="https://asciinema.org/a/lVvprUQwcH7mgTVcTXlCmSmkI.svg" /></a>
+<a href="https://asciinema.org/a/iU9jCM9TPbUU2ZuPOQTIvTTZN" target="_blank"><img src="https://asciinema.org/a/iU9jCM9TPbUU2ZuPOQTIvTTZN.svg" /></a>
+
+Example of nested files .json, .yml and .yaml difference
+<a href="https://asciinema.org/a/CDxtbrFwD51oVu3Snd5gxhhbE" target="_blank"><img src="https://asciinema.org/a/CDxtbrFwD51oVu3Snd5gxhhbE.svg" /></a>
