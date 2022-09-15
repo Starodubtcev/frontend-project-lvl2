@@ -5,17 +5,11 @@ const getDepth = (depth) => {
   return blank.repeat(depth * 2);
 };
 
-// const makeLine = (value) => {
-//   return `${value}`;
-// };
-
 const getValue = (data, depth = 0) => {
   if (!_.isPlainObject(data)) {
-    // console.log(data);
     return data;
   }
   const entries = Object.entries(data);
-  // const items = entries.map(([key, value]) => `\n${getDepth(depth + 1)}  ${key}: ${getValue(value, depth + 2)}\n${getDepth(depth + 1)}`);
   const items = entries.map(([key, value]) => `${getDepth(depth + 1)}  ${key}: ${getValue(value, depth + 2)}`);
 
   const body = `{\n${items.join('\n')}\n${getDepth(depth)}}`;
@@ -48,4 +42,4 @@ const stylish = (data, depth = 0) => {
   return `{\n${result.join('\n')}\n${getDepth(depth)}}`;
 };
 
-export { stylish };
+export default stylish;
