@@ -5,6 +5,7 @@ import { getReadedFile, getFormattedFilePath } from '../src/parsers.js';
 const expectedData12 = getReadedFile(getFormattedFilePath('expectedData12.txt'), 'utf-8');
 const expectedData13 = getReadedFile(getFormattedFilePath('expectedData13.txt'), 'utf-8');
 const expectedData32 = getReadedFile(getFormattedFilePath('expectedData32.txt'), 'utf-8');
+const expectedData45 = getReadedFile(getFormattedFilePath('expectedData45.txt'), 'utf-8');
 
 test('.json 1st level deep check', () => {
   expect(genDiff('file1.json', 'file2.json')).toEqual(expectedData12);
@@ -26,4 +27,8 @@ test('.yaml 1st level deep check', () => {
 
 test('incorrect format check', () => {
   expect(() => genDiff('file1.yaml', 'file2.ym')).toThrowError(new Error('Incorrect format, you can use only .json, .yml, .yaml formats'));
+});
+
+test('.json nested levels deep check', () => {
+  expect(genDiff('file4.json', 'file5.json')).toEqual(expectedData45);
 });

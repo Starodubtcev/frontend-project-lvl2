@@ -52,7 +52,7 @@ const genDiff = (filepath1, filepath2) => {
   const dataParsed1 = getDataParsed(filepath1);
   const dataParsed2 = getDataParsed(filepath2);
   const getDiff = getIter(dataParsed1, dataParsed2);
-  console.log(getDiff);
+  // console.log(getDiff);
   return stylish(getDiff);
 };
 
