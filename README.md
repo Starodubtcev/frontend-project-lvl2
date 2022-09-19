@@ -19,3 +19,6 @@ Example of nested files .json, .yml and .yaml difference stylish format
 
 Example of .json difference plain format
 <a href="https://asciinema.org/a/dBqWtV0iA7CJnPvkkxtDMJPU3" target="_blank"><img src="https://asciinema.org/a/dBqWtV0iA7CJnPvkkxtDMJPU3.svg" /></a>
+
+Example of .json difference JSON format
+<a href="https://asciinema.org/a/FuxWLEYYfOMDkJrnOKYtCxOQM" target="_blank"><img src="https://asciinema.org/a/FuxWLEYYfOMDkJrnOKYtCxOQM.svg" /></a>
