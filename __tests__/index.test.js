@@ -8,6 +8,7 @@ const expectedData13 = getReadedFile(getFormattedFilePath('expectedData13.txt'),
 const expectedData32 = getReadedFile(getFormattedFilePath('expectedData32.txt'), 'utf-8');
 const expectedData45 = getReadedFile(getFormattedFilePath('expectedData45.txt'), 'utf-8');
 const expectedDataPlain45 = getReadedFile(getFormattedFilePath('expectedDataPlain45.txt'), 'utf-8');
+const expectedDataJSON45 = getReadedFile(getFormattedFilePath('expectedDataJSON45.txt'), 'utf-8');
 
 test('.json 1st level deep check', () => {
   expect(genDiff('file1.json', 'file2.json')).toEqual(expectedData12);
@@ -49,4 +50,16 @@ test('.yaml plain check', () => {
 
 test('incorrect style format check', () => {
   expect(() => genDiff('file1.yaml', 'file2.yml', 'anyFormat')).toThrowError(new Error('anyFormat - is unknown format, you can use only plain and stylish formats. Please launch gendiff -h to see all options.'));
+});
+
+test('.json JSON check', () => {
+  expect(genDiff('file4.json', 'file5.json', 'json')).toEqual(expectedDataJSON45);
+});
+
+test('.yml JSON check', () => {
+  expect(genDiff('file4.yml', 'file5.yml', 'json')).toEqual(expectedDataJSON45);
+});
+
+test('.yaml JSON check', () => {
+  expect(genDiff('file4.yaml', 'file5.yaml', 'json')).toEqual(expectedDataJSON45);
 });
