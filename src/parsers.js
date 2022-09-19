@@ -13,7 +13,7 @@ const getDataParsed = (filePath) => {
   } else if (getExtName(getFormattedFilePath(filePath)) === '.yml' || getExtName(getFormattedFilePath(filePath)) === '.yaml') {
     result = yaml.load(getReadedFile(filePath));
   } else {
-    throw new Error('Incorrect format, you can use only .json, .yml, .yaml formats');
+    throw new Error('Incorrect file format, you can use only .json, .yml, .yaml formats');
   }
   return result;
 };

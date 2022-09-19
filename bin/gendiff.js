@@ -8,10 +8,10 @@ const program = new Command();
 program
   .version('0.0.1', '-v, --version', 'output the version number.')
   .description('Compares two configuration files and shows a difference.')
-  .option('-f, --format <type>', 'output format')
+  .option('-f, --format <type>', 'output format (default = "stylish")', 'stylish')
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
-    console.log(genDiff(filepath1, filepath2));
+    console.log(genDiff(filepath1, filepath2, program.opts().format));
   });
 
 program.parse();
