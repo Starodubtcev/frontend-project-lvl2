@@ -1,9 +1,6 @@
 import _ from 'lodash';
 
-const getDepth = (depth) => {
-  const blank = ' ';
-  return blank.repeat(depth * 2);
-};
+const getDepth = (depth) => ' '.repeat(depth * 2);
 
 const getValue = (data, depth = 0) => {
   if (!_.isPlainObject(data)) {
@@ -11,9 +8,8 @@ const getValue = (data, depth = 0) => {
   }
   const entries = Object.entries(data);
   const items = entries.map(([key, value]) => `${getDepth(depth + 1)}  ${key}: ${getValue(value, depth + 2)}`);
-
-  const body = `{\n${items.join('\n')}\n${getDepth(depth)}}`;
-  return body;
+  const result = `{\n${items.join('\n')}\n${getDepth(depth)}}`;
+  return result;
 };
 
 const stylish = (data, depth = 0) => {
@@ -33,10 +29,7 @@ const stylish = (data, depth = 0) => {
       case 'nested':
         return `${getDepth(depth + 1)}  ${name}: ${stylish(value, depth + 2)}`;
       default:
-        // console.log(name);
-        // console.log(type);
         throw new Error(`${type} - is unknown active`);
-        // return `${getDepth(depth + 1)}  ${name}: ${stylish(value, depth + 2)}`;
     }
   });
   return `{\n${result.join('\n')}\n${getDepth(depth)}}`;

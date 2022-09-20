@@ -1,8 +1,0 @@
-{
-    "common": {
-      "follow": false
-    },
-    "group1": {
-      "foo": "bar"
-    }
-  }

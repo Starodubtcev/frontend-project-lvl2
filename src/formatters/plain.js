@@ -1,13 +1,15 @@
 import _ from 'lodash';
 
 const getValue = (value) => {
+  let resultedValue = '';
   if (typeof value === 'string') {
-    return `'${value}'`;
+    resultedValue = `'${value}'`;
+  } else if (_.isPlainObject(value)) {
+    resultedValue = '[complex value]';
+  } else {
+    resultedValue = value;
   }
-  if (_.isPlainObject(value)) {
-    return '[complex value]';
-  }
-  return value;
+  return resultedValue;
 };
 
 const plain = (data, newName = '') => {
@@ -27,8 +29,6 @@ const plain = (data, newName = '') => {
       case 'nested':
         return plain(value, `${newName}${name}.`);
       default:
-        // console.log(name);
-        // console.log(type);
         throw new Error(`${type} - is unknown active`);
     }
   });
