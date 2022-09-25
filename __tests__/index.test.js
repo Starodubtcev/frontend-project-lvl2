@@ -1,11 +1,15 @@
+import fs from 'fs';
+import path from 'path';
 import { test, expect } from '@jest/globals';
 import genDiff from '../src/index.js';
-import { getReadedFile, getFormattedFilePath } from '../src/parsers.js';
 
-const expectedData12 = getReadedFile(getFormattedFilePath('expectedData12.txt'), 'utf-8');
-const expectedData45 = getReadedFile(getFormattedFilePath('expectedData45.txt'), 'utf-8');
-const expectedDataPlain45 = getReadedFile(getFormattedFilePath('expectedDataPlain45.txt'), 'utf-8');
-const expectedDataJSON45 = getReadedFile(getFormattedFilePath('expectedDataJSON45.txt'), 'utf-8');
+const getFormattedFilePath = (filePath) => path.resolve(process.cwd(), './__fixtures__/', filePath);
+const getReadedFile = (obj) => fs.readFileSync(getFormattedFilePath(obj), 'utf-8');
+
+const expectedData12 = getReadedFile(('expectedData12.txt'), 'utf-8');
+const expectedData45 = getReadedFile(('expectedData45.txt'), 'utf-8');
+const expectedDataPlain45 = getReadedFile(('expectedDataPlain45.txt'), 'utf-8');
+const expectedDataJSON45 = getReadedFile(('expectedDataJSON45.txt'), 'utf-8');
 
 test('.json 1st level deep test', () => {
   expect(genDiff('file1.json', 'file2.json')).toEqual(expectedData12);
