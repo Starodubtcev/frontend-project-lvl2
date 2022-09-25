@@ -14,22 +14,19 @@ const getValue = (data, depth = 0) => {
 
 const stylish = (data, depth = 0) => {
   const result = data.map((item) => {
-    const {
-      name, value, value1, value2, type,
-    } = item;
-    switch (type) {
+    switch (item.type) {
       case 'unchanged':
-        return `${getDepth(depth + 1)}  ${name}: ${getValue(value, depth + 2)}`;
+        return `${getDepth(depth + 1)}  ${item.name}: ${getValue(item.value, depth + 2)}`;
       case 'added':
-        return `${getDepth(depth + 1)}+ ${name}: ${getValue(value, depth + 2)}`;
+        return `${getDepth(depth + 1)}+ ${item.name}: ${getValue(item.value, depth + 2)}`;
       case 'deleted':
-        return `${getDepth(depth + 1)}- ${name}: ${getValue(value, depth + 2)}`;
+        return `${getDepth(depth + 1)}- ${item.name}: ${getValue(item.value, depth + 2)}`;
       case 'changed':
-        return `${getDepth(depth + 1)}- ${name}: ${getValue(value1, depth + 2)}\n${getDepth(depth + 1)}+ ${name}: ${getValue(value2, depth + 2)}`;
+        return `${getDepth(depth + 1)}- ${item.name}: ${getValue(item.value1, depth + 2)}\n${getDepth(depth + 1)}+ ${item.name}: ${getValue(item.value2, depth + 2)}`;
       case 'nested':
-        return `${getDepth(depth + 1)}  ${name}: ${stylish(value, depth + 2)}`;
+        return `${getDepth(depth + 1)}  ${item.name}: ${stylish(item.value, depth + 2)}`;
       default:
-        throw new Error(`${type} - is unknown active`);
+        throw new Error(`${item.type} - is unknown active`);
     }
   });
   return `{\n${result.join('\n')}\n${getDepth(depth)}}`;
