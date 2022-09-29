@@ -12,7 +12,7 @@ const getValue = (data, depth = 0) => {
   return result;
 };
 
-const stylish = (body) => {
+const getStylishFormat = (body) => {
   const iter = (data, depth) => data.map((item) => {
     switch (item.type) {
       case 'unchanged':
@@ -32,4 +32,4 @@ const stylish = (body) => {
   return `{\n${iter(body, 1).join('\n')}\n}`;
 };
 
-export default stylish;
+export default getStylishFormat;

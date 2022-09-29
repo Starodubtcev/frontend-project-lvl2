@@ -1,11 +1,11 @@
 import _ from 'lodash';
 
-const getOneLevelDiff = (data1, data2) => {
+const findDifference = (data1, data2) => {
   const keys = _.union(_.keys(data1), _.keys(data2));
   const sortedKeys = _.sortBy(keys);
   const difference = sortedKeys.map((item) => {
     if (_.isPlainObject(data1[item]) && _.isPlainObject(data2[item])) {
-      return { name: item, value: getOneLevelDiff(data1[item], data2[item]), type: 'nested' };
+      return { name: item, value: findDifference(data1[item], data2[item]), type: 'nested' };
     } if (!_.isEqual(data1[item], data2[item])
     && _.has(data1, item) && _.has(data2, item)) {
       return {
@@ -20,7 +20,5 @@ const getOneLevelDiff = (data1, data2) => {
   });
   return difference;
 };
-
-const findDifference = (dataParsed1, dataParsed2) => getOneLevelDiff(dataParsed1, dataParsed2);
 
 export default findDifference;

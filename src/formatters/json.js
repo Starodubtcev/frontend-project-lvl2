@@ -1,3 +1,3 @@
-const json = (data) => JSON.stringify(data);
+const getJsonFormat = (data) => JSON.stringify(data);
 
-export default json;
+export default getJsonFormat;

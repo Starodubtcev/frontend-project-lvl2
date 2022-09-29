@@ -11,22 +11,19 @@ const getValue = (value) => {
   return `${value}`;
 };
 
-const plain = (data, newName = '') => {
+const getPlainFormat = (data, itemPath = '') => {
   const result = data.map((item) => {
-    // const {
-    //   name, type, value, value1, value2,
-    // } = item;
     switch (item.type) {
       case 'added':
-        return `Property '${newName}${item.name}' was added with value: ${getValue(item.value)}`;
+        return `Property '${itemPath}${item.name}' was added with value: ${getValue(item.value)}`;
       case 'deleted':
-        return `Property '${newName}${item.name}' was removed`;
+        return `Property '${itemPath}${item.name}' was removed`;
       case 'changed':
-        return `Property '${newName}${item.name}' was updated. From ${getValue(item.value1)} to ${getValue(item.value2)}`;
+        return `Property '${itemPath}${item.name}' was updated. From ${getValue(item.value1)} to ${getValue(item.value2)}`;
       case 'unchanged':
         return '';
       case 'nested':
-        return plain(item.value, `${newName}${item.name}.`);
+        return getPlainFormat(item.value, `${itemPath}${item.name}.`);
       default:
         throw new Error(`${item.type} - is unknown active`);
     }
@@ -35,4 +32,4 @@ const plain = (data, newName = '') => {
   return `${filteredResult.join('\n')}`;
 };
 
-export default plain;
+export default getPlainFormat;
