@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const getValue = (value) => {
+const getStringifyValue = (value) => {
   if (typeof value === 'string') {
     return `'${value}'`;
   } if (value === null) {
@@ -15,11 +15,11 @@ const getPlainFormat = (data, itemPath = '') => {
   const result = data.map((item) => {
     switch (item.type) {
       case 'added':
-        return `Property '${itemPath}${item.name}' was added with value: ${getValue(item.value)}`;
+        return `Property '${itemPath}${item.name}' was added with value: ${getStringifyValue(item.value)}`;
       case 'deleted':
         return `Property '${itemPath}${item.name}' was removed`;
       case 'changed':
-        return `Property '${itemPath}${item.name}' was updated. From ${getValue(item.value1)} to ${getValue(item.value2)}`;
+        return `Property '${itemPath}${item.name}' was updated. From ${getStringifyValue(item.value1)} to ${getStringifyValue(item.value2)}`;
       case 'unchanged':
         return '';
       case 'nested':
